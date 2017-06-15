@@ -1,0 +1,94 @@
+vankiauto kulkee 3 kirjaston v‰lill‰, k‰ytt‰m‰ll‰ 3 tiet‰
+red 25min
+blue 15min
+green 5min
+kukin sijainti on merkitty tietyll‰ v‰rill‰
+voidaan ajaa vain n‰it‰ teit‰ pitkin, yhteydet lˆytyy tietokannasta.
+-> Pit‰‰ tehd‰ visuaalinen reitti kartta, mist‰ n‰kee kaikki sijainnit ja niiden v‰liset reitit
+
+pit‰‰ voida valita mist‰ aloittaa, mutta pit‰‰ k‰yd‰ kaikissa -ainakin- kerran.
+huomioi vain matkaaika kirjastojen v‰lill‰, viimeinen takaisin tulo matka voi j‰tt‰‰ huomioimatta.
+
+antaa selv‰n, visuaalisen, j‰ljitett‰v‰ reitti suunnitelman ja matkaajan.
+
+-perl (toimiiko python)
+-asyncronous javascript calls -> tarkoittaa kai ett‰ eri osat koodia ei katkaise suoritus ketjua
+-apache2 application server debian deriative linux env (nyt saa toimia ubuntu palvelimella)
+-pakataan jollakin ja toimii heti kun pakkauksen purkaa
+-k‰yttˆliittym‰ selaimella
+-lukee kirjastojen reitti tiedot tietokannasta
+
+Ajank‰yttˆ
+§ =  kaikki merkityt on tehty samaan aikaan merkityn aikam‰‰r‰n aikana merkittyn‰ p‰iv‰m‰‰r‰n‰
+, = on tehty jo
+ß = p‰iv‰m‰‰r‰erotin
+Valmistelu
+-T‰m‰ tekstitiedosto 3§ , 4§ß1.6 + 4 + 4 + 4
+-tarvittavien tietojen tekeminen 3§, + ?
+
+Suunnittelu
+-Koodi 3§, + 4 + 4 + 4
+-Rakenne 3§, + 4 + 2
+Tekeminen
+-Koodi  4§ß1.6, 4ß5.6 , 4ß8.6 , 4ß12.6 + 4 + 4 + 4 + 4 + 4 + 4
+-Verkkosivu + 4 + 4 + 4 + 4
+Viimeistely
+-Ohjelman pakkaus + 2
+-Ohjelman testaus + 4 + 4
+Muut
+-Kaikenmaailman ep‰m‰‰r‰isten ongelmien ratkominen linux ymp‰ristˆss‰ 4§ß1.6, + 4 + 4 + 4 + 4 
+-visual studiossa 4§ß1.6, + 4 + 4 + 4 + 4 
+-pycharmissa 
+-muiden ongelmien selvitys  1ß15.6 + 
+
+4h
+ennen: teht‰v‰‰n tutustuminen ja suunnittelun aloitus
+1.6: koodin kirjoittamisen alotus, visual studion laitto, eri ongelmien selvittely‰, tiedon etsiminen
+
+
+
+
+
+1.
+Tee tietokanta ja lis‰‰ siihen tiedot
+
+11
+
+2.
+Koodi
+
+{
+{}
+{reitti tiedot?}
+
+{reitin lasku
+(mahdolliset reitit)
+(+optimaaliset reitit)
+}
+
+{k‰yttˆliittym‰/verkkosivu}
+}
+
+mit‰ javasciptill‰ tekee t‰ss‰?
+piirr‰ reittikartta verkkosivulle?
+-koodi tekee ja muokkaa verkkosivua-
+tekee kuvatiedoston ja piirt‰‰ siihen reittitiedot?
+(laskee kunkin pisteen koordinaatit ja piirt‰‰ niiden v‰lille viivat. Pisteiden et‰isyys riippuu niiden v‰listen reittien pituudesta)
+
+-pit‰‰ p‰‰st‰ tietokantaan k‰siksi
+-> DEBUG
+>listaa kaikki sijainnit tietokannasta
+>> listaa aivan kaiken tiedostosta: x = open("","r"), print x.read()
+-lataa tietokannan tiedot arrayyn?
+
+-K‰ytt‰j‰ valitsee jonkin aloitus pisteen
+>koodi laskee kaikki reitit jotka k‰yv‰t l‰pi kaikki muut sijainnit
+-  *-muotoinen reitti suunnittelu, k‰y jossain ja tulee takaisin
+- menee paikasta toiseen, k‰y l‰pi mahdolliset p‰‰m‰‰r‰t joka paikassa ja menee aina sinne miss‰ ei ole ollut. Jos on jo ollut jossain, simuloi seuraavaan paikkaan menemist‰ ja katsoo sielt‰ onko siell‰ paikkoja joissa ei ole ollut. Priorisoi lyhemm‰n reitin. Jos vain 1 tai useampia yht‰ pitki‰, ottaa ensimm‰isen ensin
+
+
+3.
+Verkkosivu
+
+-p‰‰see tietokantaan
+-
