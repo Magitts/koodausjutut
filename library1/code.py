@@ -156,8 +156,8 @@ def haepaikkatiedot(valinta):
         break
 
     paikkatiedot = valittu
-    paikka = valinta
-    turha = "start:" + paikka
+    #paikka = valinta
+    #turha = "start:" + valinta
     varit = ["green","blue","red"]
     varitt = "color:"
     endp = "end:"
@@ -166,7 +166,7 @@ def haepaikkatiedot(valinta):
             kohta = 0
             while kohta <= len(lista)-1:
 
-                if lista[kohta] == turha:
+                if lista[kohta] == valinta:
                     del lista[kohta]
                 kohta += 1
             kohta = 0
