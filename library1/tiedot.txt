@@ -19,38 +19,73 @@ antaa selv‰n, visuaalisen, j‰ljitett‰v‰ reitti suunnitelman ja matkaajan.
 -lukee kirjastojen reitti tiedot tietokannasta
 
 Ajank‰yttˆ
-§ =  kaikki merkityt on tehty samaan aikaan merkityn aikam‰‰r‰n aikana merkittyn‰ p‰iv‰m‰‰r‰n‰
-, = on tehty jo
+§ =  kaikki merkityt on tehty samaan aikaan merkityn aikam‰‰r‰n aikana merkittyn‰ 
+
+p‰iv‰m‰‰r‰n‰
+,
+ = on tehty jo
+
 ß = p‰iv‰m‰‰r‰erotin
+
+
+#KOTONA#
+
+
+
+
+
+###
+
+
+
+
 Valmistelu
 -T‰m‰ tekstitiedosto 3§ , 4§ß1.6 + 4 + 4 + 4
+
 -tarvittavien tietojen tekeminen 3§, + ?
+
 
 Suunnittelu
 -Koodi 3§, + 4 + 4 + 4
--Rakenne 3§, + 4 + 2
+-
+Rakenne 3§, + 4 + 2
+
 Tekeminen
--Koodi  4§ß1.6, 4ß5.6 , 4ß8.6 , 4ß12.6 + 4 + 4 + 4 + 4 + 4 + 4
+
+-Koodi  4§ß1.6, 4ß5.6 , 4ß8.6 , 4ß12.6, 4ß15.6, 230ß16.6 , 4ß19.6 + 4 + 4 + 4 + 4 + 4
+
 -Verkkosivu + 4 + 4 + 4 + 4
+
 Viimeistely
 -Ohjelman pakkaus + 2
--Ohjelman testaus + 4 + 4
+-
+Ohjelman testaus + 4 + 4
+
 Muut
--Kaikenmaailman ep‰m‰‰r‰isten ongelmien ratkominen linux ymp‰ristˆss‰ 4§ß1.6, + 4 + 4 + 4 + 4 
--visual studiossa 4§ß1.6, + 4 + 4 + 4 + 4 
--pycharmissa 
--muiden ongelmien selvitys  1ß15.6 + 
+-Kaikenmaailman ep‰m‰‰r‰isten ongelmien ratkominen 
+linux ymp‰ristˆss‰ 4§ß1.6, + 4 + 4 + 4 + 4 
+-
+visual studiossa 4§ß1.6, + 4 + 4 + 4 + 4 
+-
+pycharmissa 
+-
+muiden ongelmien selvitys  1ß15.6 + 
 
 4h
-ennen: teht‰v‰‰n tutustuminen ja suunnittelun aloitus
-1.6: koodin kirjoittamisen alotus, visual studion laitto, eri ongelmien selvittely‰, tiedon etsiminen
+ennen: 
+teht‰v‰‰n tutustuminen ja suunnittelun aloitus
+
+1.6: 
+koodin kirjoittamisen alotus, visual studion laitto, eri ongelmien selvittely‰, tiedon etsiminen
 
 
 
 
 
 1.
+
 Tee tietokanta ja lis‰‰ siihen tiedot
+
 
 11
 
