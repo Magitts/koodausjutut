@@ -1,0 +1,108 @@
+#!/usr/bin/python
+# coding=utf-8
+#https://www.tutorialspoint.com/python/index.htm
+#https://learnpythonthehardway.org/book/ex50.html
+#open file tietokanta_tiedot
+#print nodes, edges
+#tiedosto = open("tietokanta_tiedot.txt","r")
+#print tiedosto.read()
+#tiedosto.close()
+###############
+#KOODIN TIEDOT#
+###############
+#Koodi laskee reitin, joka käy läpi kaikki sijainnit
+
+#Koodi luo verkkosivun käyttöliittymää varten
+	#Verkkosivu näyttää kaikki mahdolliset sijainnit ja antaa valita niistä jonkin
+	#verkkosivu hakee tiedot reitin näyttämiselle koodista, voi olla vaan joku nappi joka pyörittää koodin käyttämällä 
+	#jotain sijaintia aloitus parametrinä
+#Dynaamisesti luotu kuva voi olla nyt turhan isotöinen ->
+#Näyttää tiedot tekstinä
+
+#1. Kaikki sijainnit, 
+
+
+
+
+#YLEISET MUUTTUJAT JOITA EI MUUTELLA MYÖHEMMIN#
+#+ ALUSTUKSET								  #
+###############################################
+#
+dbfile = "tietokanta_tiedot.txt"
+rlin = 25 #	RED LINE
+blin = 15 #	BLUE LINE
+glin = 5 #	GREEN LINE
+startloc = "" 		#Alustetaan aloituspaikan parametri. Kirjoita se tähän suoraan testausta varten 
+					#ja sille voi tehdä oman osion joka ottaa sen verkkosivulta
+
+#TIETOKANNAN TIETOJEN KÄSITTELY KÄYTETTÄVÄÄN MUOTOON#
+#####################################################
+#
+#kerää tiedot tiedostosta ja laittaa ne sopivaan muotoon, vaikka arrayhyn tai dictionaryyn
+#Omiin osioihin: nodes, edges. Nodes: list, edges: dictionary. Edges == reitit sijaintien välillä. 
+#dict = {"start":paikka1, "end":paikka2, "color":väri,"kuljettu":0}
+#reitti1 = {"start":paikka1,"end":paikka2,"color":väri,"kuljettu":kuljettu}
+
+#eli tiedosto käydään läpi ja siitä poimitaan sopivat tiedot dictionaryyn, luoden aina uuden reitin jokaiselle löydetylle.
+#-> }, erottaa  edge entryt ja ," erottaa entryjen rivit. 
+
+nodelist = [] 
+
+#käy läpi tietokanta tiedoston tekstiä
+#alkaa selaamaan "nodes":[ kohdasta ja lopettaa ] merkkiin
+#hakee tekstinpätkiä jotka on "" merkkien sisässä
+#kun löytää jonkun, laittaa sen listaan
+nodelist.append("test")
+
+print nodelist
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#??#
+####
+
+#######
+#KOODI#
+#######
+#Ottaa parametrin, jonka mukaan reitti lasketaan. Voi olla aluksi kovakoodattuna ja laittaa myöhemmin vastaanottamaan sen
+#verkkosivulta
+
+#käyttäen tietokannan tietoja, laskee reitin kaikkien sijaintien kautta alkaen parametristä
+#1. katsoo nykyisen sijainnin mahdolliset reitit
+#2. valitsee lyhemmän reitin josta ei ole menty. Jos reitit yhtä pitkiä, ottaa ensimmäisen. Jos kaikki reitit menty jo 
+#(menee "umpikujaan"), ottaa jonkin seuraavan sijainnin ja katsoo minne sieltä pääsee ( ),
+## lista käydyistä ja käymättömistä sijainneista. Koodi pyörii, kunnes käymättömien paikkojen lista on tyhjä. Käytyjen paikkojen listaan 
+## merkinnät monestikko on käyty jossain paikassa. Tähän voi käyttöö dictionaryä -> Key:Paikka, Value: monestikko on käyty
+#ja katsoo sieltä onko sopivaa määränpäätä.
+#-> laittaa reitille lukeman monestikko siitä on menty. Kun katsotaan seuraavia reittejä, pyritään ottamaan aina 
+#reitti jonka menemis lukema on mahdollisimman pieni.
+
+############
+#VERKKOSIVU#
+############
+#1. Tekee verkkosivu tiedoston ja alustaa sen sopivan näköiseksi. Huom, jos tiedosto on jo olemassa niin ei tee uutta
+#1.1 Lisää toiminnallisuuden verkkosivulle, näyttää sijaintitiedot, alkupisteen valinta, nappi joka pyörittää koodin
+#2. Hakee koodin tuloksen ja näyttää sen 
+
+#linuxissa voidaan ehkä tehdä kutsumalla jotain linux skriptiä, joka tekee tekstin verkkosivulle
+################
+#KOODIN LOPETUS#
+################
+#Rimpsut jotka suoritetaan kun koodi saa kaiken tehtyä
+####dbfile.close()
+#tiedoston lukeminen pitää ainakin lopettaa tässä vaiheessa.

@@ -1,0 +1,8 @@
+dos2unix
+-windowsilla kirjoitetut tiedostot käyttää eri rivin lopetusmerkkejä kuin unix. dos2unix muuttaa ne oikean malliseksi
+-> korjaa bad interpeter virheen
+-> voi korjata myös tekemällä vi komento joka muuttaa tiedoston eri muotoon
+
+-linuxissa suoritettavan koodin alkuun
+#!usr/bin/python
+# coding=utf-8
