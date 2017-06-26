@@ -1,0 +1,63 @@
+﻿ohjauspaneeli -> ohjelmat -> ota käyttöön windowsin ominaisuuksia
+IIS palvelut
+	verkkohallintatyökalut
+		iss hallintakonsoli
+	.net ---- 4.6
+		WCF-palvelut
+			http aktivointi
+	www
+		sovelluskehitys
+			.net 4.6
+			cgi
+			asp -kaikki 
+		yleiset http ominaisuudet
+			staattinen sisältö
+			kansioiden selaus
+			http virheet
+
+
+iis palveluiden hallinta
+	sivustot
+		tee uusi sivu
+	lisää sovellus sivustoon
+		lisää sovelluskansio (ohjelmille joita tehdään)
+	käsittelijän yhdistämiset
+	lisää komentosarjan yhdistäminen
+		tässä lisätään ohjelma tulkki sivulle, että cgi toimii.
+		laita nimeksi *.py ja suoritustiedostoksi pythonin exe tiedosto. lisää polun loppuun %s%s
+
+		mene sitten listan yläosaan ja muokkaa cgi-exe suoritusoikeuksia, lisää suoritus
+	käynnistä sivu uudelleen varulta
+
+
+avaa localhost selaimessa
+	jos sivulle tulee edes palvelinvirhe ilmoitus, sivu toimii.
+	
+
+	käyttö estetty:
+	jaa kansio jossa verkkosivun tiedot ovat
+	kopioi web.config verkkosivu kansioon
+
+	nyt pitäisi tulla ilmoitus 403.14 forbidden, joka tarkoittaa tässä että kansioita ei saa selata
+		muokkaa web.config
+		lisää system.webServer tagien väliin
+<system.webServer>
+    <directoryBrowse enabled="true" />
+</system.webServer>
+		ongelman pitäisi kuitenkin korjaantua jos lisäät jonkin verkkosivun verkkosivu kansioon.
+
+muokkaamattomana valmiin config tiedoston pitäisi näyttää tältä
+
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <system.webServer>
+        <handlers accessPolicy="Read, Execute, Script">
+            <add name="python" path=".py" verb="*" modules="CgiModule" scriptProcessor="C:\Program Files\Python36\python.exe" resourceType="File" />
+        </handlers>
+    </system.webServer>
+</configuration>
+
+kokeile tehdä tämä jos tulee ongelmia. se päivittää iisin käyttämään tuota net versiota. versionumeroa voi vaihtaa jos haluaa kokeilla muita.
+cmd
+%windir%\Microsoft.NET\Framework64\v4.0.30319\aspnet_regiis.‌​exe -ir
+
