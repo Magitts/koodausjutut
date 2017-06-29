@@ -1,0 +1,18 @@
+asenna apache2
+asenna python
+
+laita cgi prosessointi p‰‰lle apacheen
+sudo a2enmod cgi
+service apache2 restart
+
+apache2.config tiedostoon
+
+<Directory /srv/www/yoursite/public_html/cgi-bin>
+        Options ExecCGI
+        SetHandler cgi-script
+    </Directory>
+
+<Directory /srv/www/yoursite/public_html>
+        Options +ExecCGI
+        AddHandler cgi-script .py
+    </Directory>
