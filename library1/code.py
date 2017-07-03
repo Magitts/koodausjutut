@@ -9,6 +9,8 @@
 # jossain ylempänä listan käsittelyssä.                                                                             #
 #####################################################################################################################
 
+import sys
+from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QComboBox
 import re
 import math
 
@@ -22,6 +24,7 @@ dbfile = "tietokanta_tiedot.txt"
 kaikki = []
 nodelist = []
 
+import cgi, cgitb
 
 def init(select):
     with open(dbfile) as file:
@@ -73,7 +76,7 @@ nodes = init("nodes")
 
 # määritellään edgelist. Poistetaan edgelistasta, joka sisältää aluksi kaikki listan, nodelist.
 # poistetaan turhat edges: ja nodes: kohdat
-varid = {"red": 25, "blue": 15, "green": 5, "Green": 5}
+varid = {"red": "25", "blue": "15", "green": "5", "Green": "5"}
 def edgemuokkaus():
     mlr = edges
 
@@ -95,27 +98,6 @@ def edgemuokkaus():
             break
         templist = []
 
-
-
-    # while ls <= len(mlr) and rangeend <= len(mlr):
-    #
-    #     templist = []
-    #
-    #     for i in range(rangestart, rangeend, 1):
-    #
-    #
-    #
-    #
-    #         # Append
-    #         templist.append(mlr[i])
-    #
-    #     rangestart = rangestart + 3
-    #     rangeend = rangeend + 3
-    #     pakattulista_work.append(templist)
-    #     ls = ls + 3
-
-        # Tässä while loopissa laitetaan edgelistan yksittäiset kohdat omiin listoihinsa suuremman listan sisälle.
-        # Listan koostumus: start,end,color
 
     # edgelistassa kunkin paikan tiedot on 3 ryppäissä.
     # jaetaan edgelista siis pienemmiksi listoiksi, joissa kussakin on vain kyseisen paikan tiedot
@@ -215,11 +197,31 @@ def haepaikkatiedot(valinta):
     valittu2 = paikkatiedot
 
     return valittu2
+
+#print(haepaikkatiedot(nodelist[1]))
+
+def listatekstiksi(paikka):
+    muutettava = haepaikkatiedot(paikka)
+    muutettu = ""
+    for a1 in range(len(muutettava)) :
+        for a2 in a1:
+            if a2.isdigit():
+                muutettu += ","+a2+":"
+            else:
+                muutettu += a2
+
+
+            print(muutettu)
+            #for a3 in a2:
+             #   pass
+
+
+#poista lopuksi viimeinen :
+
+    return muutettu
+print(listatekstiksi(nodelist[0]))
 # lopuksi funktio siistii ulos työnnettävän arvon -> alku piste poistetaan koska se tiedetään jo kun funktiota kutsutaan
 # päätepisteestä otetaan vain nimi ja matkan pituus kerrotaan minuutteina.
-for i in range(len(nodelist)):
-    print(nodelist[i])
-    print(haepaikkatiedot(nodelist[i]))
 
 # nyt reittitiedot saadaan ulos jokaisesta nodesta. Seuraavaksi pitää
 
@@ -239,6 +241,59 @@ for i in range(len(nodelist)):
 # hubin tulee ottaa huomioon "saapumisviiva" eli mistä kulmasta edellinen hubi liittyy siihen ja huolehtia että uusia
 # hubeja ei tehdä tähän kulmaan tai lähelle sitä.
 #on otettava huomioon myös ne joista ei lähde muualle -> ovat umpikujia
+
+
+###########
+#ja nyt teemme ikkunan, joka näyttää paikkavaihtoehdot
+
+class GUI(QWidget):
+
+    def __init__(self):
+        super().__init__()
+        self.initUI()
+
+    def initUI(self):
+        self.lbl = QLabel("Teksti", self)
+
+        combo = QComboBox(self)
+        for juttu in nodelist:
+            combo.addItem(juttu)
+
+
+        combo.move(50,50)
+        self.lbl.move(50,150)
+
+        combo.activated[str].connect(self.onActivated)
+
+        self.setGeometry(300,300,300,200)
+        self.setWindowTitle('valintaikkuna')
+        self.show()
+        #print(haepaikkatiedot("Polvijärvi"))
+    def onActivated(self, text):
+        self.lbl.setText(listatekstiksi(text))
+        self.lbl.adjustSize()
+
+
+if __name__ != '__main__':
+    ohjelma = QApplication(sys.argv)
+    esim = GUI()
+    sys.exit(ohjelma.exec_())
+
+#
+# def ikkuna():
+#     ohjelma = QApplication(sys.argv)
+#     o = QWidget()
+#     o.resize(300,350)
+#     o.move(300,300)
+#     o.setWindowTitle("test")
+#     o.show()
+#
+#     sys.exit(ohjelma.exec_())
+#
+# ikkuna()
+
+
+
 
 
 
