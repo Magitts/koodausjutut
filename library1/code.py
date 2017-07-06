@@ -9,8 +9,12 @@
 # jossain ylempänä listan käsittelyssä.                                                                             #
 #####################################################################################################################
 
-import sys
+import sys, random
 from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QComboBox
+from PyQt5.QtGui import QPainter, QColor, QPen
+from PyQt5.QtWidgets import QHBoxLayout, QFrame, QSplitter, QStyleFactory, QListView,QListWidget,QListWidgetItem
+from PyQt5.QtCore import Qt
+
 import re
 import math
 
@@ -203,23 +207,18 @@ def haepaikkatiedot(valinta):
 def listatekstiksi(paikka):
     muutettava = haepaikkatiedot(paikka)
     muutettu = ""
-    for a1 in range(len(muutettava)) :
-        for a2 in a1:
-            if a2.isdigit():
-                muutettu += ","+a2+":"
+    for a1 in muutettava :
+        for a2 in range(len(a1)):
+            if a1[a2].isdigit():
+                muutettu += ","+a1[a2]+":"
             else:
-                muutettu += a2
-
-
-            print(muutettu)
-            #for a3 in a2:
-             #   pass
-
-
-#poista lopuksi viimeinen :
+                muutettu += a1[a2]
+    muutettu = muutettu[:-1]
+    if muutettu == "":
+        muutettu = "umpikuja"
 
     return muutettu
-print(listatekstiksi(nodelist[0]))
+
 # lopuksi funktio siistii ulos työnnettävän arvon -> alku piste poistetaan koska se tiedetään jo kun funktiota kutsutaan
 # päätepisteestä otetaan vain nimi ja matkan pituus kerrotaan minuutteina.
 
@@ -246,53 +245,77 @@ print(listatekstiksi(nodelist[0]))
 ###########
 #ja nyt teemme ikkunan, joka näyttää paikkavaihtoehdot
 
-class GUI(QWidget):
+class Info_GUI(QWidget):
 
     def __init__(self):
         super().__init__()
         self.initUI()
 
+
     def initUI(self):
-        self.lbl = QLabel("Teksti", self)
 
-        combo = QComboBox(self)
+        hbox = QHBoxLayout(self)
+        drawbox = QHBoxLayout(self)
+        jakaja_H = QSplitter(Qt.Horizontal)
+        jakaja_V = QSplitter(Qt.Vertical)
+        hbox.addWidget(jakaja_H)
+        drawbox.addWidget(jakaja_V)
+
+        self.setLayout(hbox)
+        self.setLayout(drawbox)
+        self.lbl = QLabel("Tyhjä", self)
+        listWidget = QListWidget()
+
         for juttu in nodelist:
-            combo.addItem(juttu)
+            item = QListWidgetItem(juttu)
+            listWidget.addItem(item)
+
+        jakaja_H.addWidget(listWidget)
+        jakaja_H.addWidget(self.lbl)
+        
 
 
-        combo.move(50,50)
+
         self.lbl.move(50,150)
+# http://nullege.com/codes/search?cq=PyQt4.QtGui.QListWidget
+        listWidget.itemClicked.connect(self.onActivated)
 
-        combo.activated[str].connect(self.onActivated)
 
-        self.setGeometry(300,300,300,200)
+
+        self.setGeometry(300,300,400,300)
         self.setWindowTitle('valintaikkuna')
         self.show()
         #print(haepaikkatiedot("Polvijärvi"))
-    def onActivated(self, text):
-        self.lbl.setText(listatekstiksi(text))
+
+    # mitä tehdään kun valitaan jotain
+    def onActivated(self,item):
+        self.lbl.setText(listatekstiksi(item.text()))
         self.lbl.adjustSize()
+        #listatekstiksi(text)
 
+    def maalausevent(self,e):
+        qp = QPainter()
+        qp.begin(self)
+        self.pisteet(qp)
+        qp.end()
 
-if __name__ != '__main__':
+    def pisteet(self,qp):
+        qp.setPen(Qt.red)
+        size = self.size()
+
+        for i in range(1000):
+            x = random.randint(1, size.width() - 1)
+            y = random.randint(1, size.height() - 1)
+        qp.drawPoint(x, y)
+
+        #vanha
+        # combo = QComboBox(self)
+        # combo.move(50,50)
+        # combo.activated[str].connect(self.onActivated)
+if __name__ == '__main__':
     ohjelma = QApplication(sys.argv)
-    esim = GUI()
+    esim = Info_GUI()
     sys.exit(ohjelma.exec_())
-
-#
-# def ikkuna():
-#     ohjelma = QApplication(sys.argv)
-#     o = QWidget()
-#     o.resize(300,350)
-#     o.move(300,300)
-#     o.setWindowTitle("test")
-#     o.show()
-#
-#     sys.exit(ohjelma.exec_())
-#
-# ikkuna()
-
-
 
 
 
