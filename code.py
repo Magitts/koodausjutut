@@ -245,24 +245,42 @@ def listatekstiksi(paikka):
 ###########
 #ja nyt teemme ikkunan, joka näyttää paikkavaihtoehdot
 
-class Info_GUI(QWidget):
+class mainwindow(QWidget):
 
     def __init__(self):
         super().__init__()
         self.initUI()
 
+    def maalausevent(self, e):
+        qp = QPainter()
+        qp.begin(self)
+        self.pisteet(qp)
+        qp.end()
+
+    def pisteet(self, qp):
+        qp.setPen(Qt.red)
+        size = self.size()
+
+        for i in range(1000):
+            x = random.randint(1, size.width() - 1)
+            y = random.randint(1, size.height() - 1)
+        qp.drawPoint(x, y)
 
     def initUI(self):
 
-        hbox = QHBoxLayout(self)
+        self.hbox = QHBoxLayout(self)
         drawbox = QHBoxLayout(self)
         jakaja_H = QSplitter(Qt.Horizontal)
         jakaja_V = QSplitter(Qt.Vertical)
-        hbox.addWidget(jakaja_H)
+        self.hbox.addWidget(jakaja_H)
         drawbox.addWidget(jakaja_V)
+        frame = QFrame()
+        frame.setFrameStyle(1)
+        self.hbox.addWidget(frame)
 
-        self.setLayout(hbox)
+        self.setLayout(self.hbox)
         self.setLayout(drawbox)
+
         self.lbl = QLabel("Tyhjä", self)
         listWidget = QListWidget()
 
@@ -272,7 +290,8 @@ class Info_GUI(QWidget):
 
         jakaja_H.addWidget(listWidget)
         jakaja_H.addWidget(self.lbl)
-        
+        jakaja_H.addWidget(frame)
+
 
 
 
@@ -293,20 +312,13 @@ class Info_GUI(QWidget):
         self.lbl.adjustSize()
         #listatekstiksi(text)
 
-    def maalausevent(self,e):
-        qp = QPainter()
-        qp.begin(self)
-        self.pisteet(qp)
-        qp.end()
 
-    def pisteet(self,qp):
-        qp.setPen(Qt.red)
-        size = self.size()
 
-        for i in range(1000):
-            x = random.randint(1, size.width() - 1)
-            y = random.randint(1, size.height() - 1)
-        qp.drawPoint(x, y)
+    #maalausevent()
+
+
+
+
 
         #vanha
         # combo = QComboBox(self)
@@ -314,7 +326,7 @@ class Info_GUI(QWidget):
         # combo.activated[str].connect(self.onActivated)
 if __name__ == '__main__':
     ohjelma = QApplication(sys.argv)
-    esim = Info_GUI()
+    esim = mainwindow()
     sys.exit(ohjelma.exec_())
 
 

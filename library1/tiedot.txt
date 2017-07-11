@@ -50,7 +50,7 @@ Rakenne 3§, + 4 + 2
 
 Tekeminen
 
--Koodi  4§ß1.6, 4ß5.6 , 4ß8.6 , 4ß12.6, 4ß15.6, 2:30ß16.6 , 4+1ß19.6 , 4ß21.6 + 4ß3.7 + 4 + 4 + 4
+-Koodi  4§ß1.6, 4ß5.6 , 4ß8.6 , 4ß12.6, 4ß15.6, 2:30ß16.6 , 4+1ß19.6 , 4ß21.6 + 4ß3.7 + 4ß6.7 + 4 + 4
 
 -Verkkosivu + 4 + 4 + 4 + 4
 
@@ -74,7 +74,7 @@ muiden ongelmien selvitys  1ß15.6 +
 
 4h
 ennen: 
-muut ep‰m‰‰r‰iset: 4ß29.6, 
+muut ep‰m‰‰r‰iset: 4ß29.6, qt:4ß10.7
 
 teht‰v‰‰n tutustuminen ja suunnittelun aloitus
 
